@@ -1,485 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digão Tur - Conforto e Segurança em Viagens</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* ------------------------------ 
-           VARIAVEIS DE CORES E FONTES
-        ------------------------------ */
-        :root {
-            --cor-primaria: #30378d; /* Azul Escuro */
-            --cor-secundaria: #4169E1; /* Azul Vibrante para destaque */
-            --cor-neutra-clara: #f7f7f7;
-            --fonte-principal: 'Poppins', "Segoe UI", Arial, sans-serif;
-        }
-
-        /* ------------------------------ 
-           ESTILO GERAL
-        ------------------------------ */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: var(--fonte-principal);
-        }
-
-        body {
-            background-color: #fff;
-            color: #444; /* Cor de texto um pouco mais suave */
-            line-height: 1.6;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        h1, h2, h3 {
-            color: var(--cor-primaria);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-        }
-        
-        h3 {
-            font-size: 1.25rem;
-            margin-top: 15px;
-            color: #222; /* Cor mais escura para títulos internos */
-            text-transform: none;
-            letter-spacing: 0;
-        }
-
-        /* Estilo para Botões */
-        .btn-principal {
-            background-color: var(--cor-secundaria);
-            color: #fff;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 30px; /* Borda mais arredondada e moderna */
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-            text-transform: uppercase;
-        }
-
-        .btn-principal:hover {
-            background-color: var(--cor-primaria);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        /* ------------------------------ 
-           CABEÇALHO
-        ------------------------------ */
-        header {
-            background-color: var(--cor-primaria);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 5%; /* Ajuste de padding */
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
-        }
-
-        header img {
-            height: 50px; /* Tamanho ajustado para o header */
-        }
-
-        header nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            margin-left: 25px;
-            padding-bottom: 5px;
-            position: relative;
-            transition: color 0.3s;
-        }
-
-        /* Efeito de sublinhado elegante */
-        header nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--cor-secundaria);
-            transition: width 0.3s ease-out;
-        }
-
-        header nav a:hover::after {
-            width: 100%;
-        }
-
-        /* ------------------------------ 
-           SEÇÃO HERO
-        ------------------------------ */
-        .hero {
-            position: relative;
-            text-align: center;
-            color: #fff;
-            overflow: hidden;
-        }
-
-        .hero img:first-child {
-            width: 100%;
-            height: 85vh; /* Aumenta a altura para maior impacto */
-            object-fit: cover;
-            filter: brightness(0.35); /* Escurece um pouco mais */
-        }
-
-        .hero img:last-of-type {
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 250px; /* Logo central maior */
-        }
-
-        .hero h1 {
-            position: absolute;
-            bottom: 15%; /* Posição mais baixa */
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 2.5rem;
-            color: #fff;
-            background: rgba(0, 0, 0, 0.6); /* Fundo sutil */
-            padding: 20px 30px;
-            border-radius: 10px;
-            max-width: 90%;
-            width: max-content;
-        }
-        
-        /* ------------------------------ 
-           SEÇÃO SERVIÇOS
-        ------------------------------ */
-        .servicos {
-            padding: 80px 5%; /* Aumenta o padding */
-            text-align: center;
-            background-color: var(--cor-neutra-clara);
-        }
-
-        .servicos h2 {
-            margin-bottom: 50px;
-            font-size: 2.5rem;
-        }
-
-        .servicos > div {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px; /* Aumenta o espaçamento entre cards */
-        }
-
-        .servicos div[class^="servico"] {
-            background-color: #fff;
-            width: 320px;
-            border-radius: 12px; /* Borda mais suave */
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Sombra mais destacada */
-            overflow: hidden;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            text-align: left;
-        }
-
-        .servicos div[class^="servico"]:hover {
-            transform: translateY(-8px); /* Efeito de "levantar" */
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-
-        .servicos div[class^="servico"] img {
-            height: 200px; /* Imagem um pouco maior */
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .servicos .card-content {
-            padding: 20px;
-        }
-        
-        .servicos .card-content p {
-             font-size: 1rem;
-             color: #666;
-        }
-        
-        .servicos div[class^="servico"] h3 {
-            margin-bottom: 10px;
-        }
-
-        /* ------------------------------ 
-           SEÇÃO SOBRE
-        ------------------------------ */
-        .sobre {
-            padding: 80px 10%;
-            background-color: #fff;
-            text-align: center;
-        }
-
-        .sobre h2 {
-            margin-bottom: 30px;
-            font-size: 2.5rem;
-        }
-
-        .sobre p {
-            line-height: 1.8;
-            font-size: 1.15rem;
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center; /* Alinha o texto ao centro para melhor leitura em telas grandes */
-        }
-
-        /* ------------------------------ 
-           SEÇÃO CONTATO
-        ------------------------------ */
-        .contato {
-            padding: 80px 10%;
-            background-color: var(--cor-neutra-clara);
-            text-align: center;
-        }
-
-        .contato h2 {
-            margin-bottom: 50px;
-            font-size: 2.5rem;
-        }
-
-        .redirect {
-            margin-bottom: 40px;
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .redirect h3 {
-             margin-top: 0;
-             margin-bottom: 15px;
-             color: var(--cor-primaria);
-             text-transform: uppercase;
-        }
-
-        .redirect p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            color: #555;
-        }
-        
-        /* O botão do contato agora usa a classe genérica otimizada */
-        .redirect button {
-            /* Mantive o estilo do botão .btn-principal para consistência */
-            background-color: var(--cor-secundaria);
-            color: #fff;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 30px; 
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-            text-transform: uppercase;
-        }
-        
-        .redirect button:hover {
-            background-color: var(--cor-primaria);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-
-        .texto-final {
-            margin-top: 50px;
-            font-size: 1.8rem;
-            color: var(--cor-primaria);
-            font-weight: 700;
-        }
-
-        /* ------------------------------ 
-           RODAPÉ
-        ------------------------------ */
-        footer {
-            background-color: var(--cor-primaria);
-            color: #fff;
-            text-align: center;
-            padding: 50px 10%;
-        }
-
-        footer img {
-            height: 60px; /* Logo maior no rodapé */
-            margin: 0 auto 15px auto;
-        }
-
-        footer p {
-            margin: 8px 0;
-            font-size: 1rem;
-        }
-
-        /* ------------------------------ 
-           RESPONSIVIDADE (MOBILE)
-        ------------------------------ */
-        @media (max-width: 992px) {
-             .hero img:last-of-type {
-                width: 200px; /* Ajusta o logo central em telas menores */
-            }
-        }
-        
-        @media (max-width: 768px) {
-            
-            /* Ajuste Header */
-            header {
-                flex-direction: column;
-                padding: 15px 20px;
-            }
-
-            header nav {
-                margin-top: 10px;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            header nav a {
-                margin: 5px 10px;
-            }
-            
-            /* Ajuste Hero */
-            .hero img:first-child {
-                height: 70vh;
-            }
-
-            .hero h1 {
-                font-size: 1.5rem;
-                bottom: 5%;
-                padding: 15px 20px;
-            }
-            
-            .hero img:last-of-type {
-                top: 10%;
-                width: 150px;
-            }
-
-            /* Ajuste Serviços */
-            .servicos, .sobre, .contato {
-                padding: 50px 5%;
-            }
-            
-            .servicos h2, .contato h2, .sobre h2 {
-                font-size: 2rem;
-            }
-
-            .servicos div[class^="servico"] {
-                width: 100%; /* Ocupa a largura total no mobile */
-            }
-
-            /* Ajuste Sobre */
-            .sobre p {
-                text-align: left; /* Melhora a leitura do parágrafo no mobile */
-                font-size: 1rem;
-            }
-            
-            /* Ajuste Contato */
-            .redirect {
-                padding: 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <title>Digão Tur</title>
 </head>
 
 <body>
     <header>
-        <img src="imagens/Logo Digão Tur Branca.png" alt="logo-digaotur">
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#servicos">Serviços</a>
-            <a href="#sobre">Sobre</a>
-            <a href="#contato">Contato</a>
-        </nav>
+        <div>
+            <img src="imagens/Logo Digão Tur Branca.png" alt="logo-digaotur" class="logo">
+        </div>
+        <div class="navegacao">
+            <nav><a href="#contato">Contato</a></nav>
+            <nav><a href="#sobre">Sobre</a></nav>
+            <nav><a href="#servicos">Serviços</a></nav>
+            <nav><a href="">Home</a></nav>
+        </div>
     </header>
-
     <main>
-        <section class="hero" id="home">
-            <img src="imagens/brackground-hero.jpg" alt="background-hero">
-            <img src="imagens/Logo Digão Tur Branca.png" alt="logo-digaotur">
-            <h1>Conforto e Segurança para suas Viagens</h1>
-        </section>
+        <div class="hero">
+            <img src="imagens/background-hero.jpg" alt="background-hero" class="background-hero">
+            <img src="imagens/Logo Digão Tur Branca.png" alt="logo-digaotur" class="logo-hero">
+            <h1>Conforto e segurança para suas viagens</h1>
+        </div>
 
         <section class="servicos" id="servicos">
-            <h2>Nossos Serviços</h2>
-            <div>
-                <div class="servico1">
-                    <img src="imagens/onibus-servico1.jpg" alt="onibus-servico1">
-                    <div class="card-content">
-                        <h3>Viagens Fretadas e Excursões</h3>
-                        <p>Realizamos viagens fretadas e excursões para todo o Brasil. Segurança e pontualidade garantidas.</p>
-                        <p>Ideal para grupos, turismo religioso e passeios em família.</p>
-                    </div>
+            <h2>SERVIÇOS</h2>
+            <div class="serico1">
+                <img src="imagens/onibus-servico1.jpg" alt="onibus-servico1">
+                <div>
+                    <h3>Viagens fretadas para todo o Brasil</h3>
+                    <p>Traslados sob medida, do lazer ao corporativo.</p>
                 </div>
-                <div class="servico2">
-                    <img src="imagens/onibus-servico2.jpg" alt="onibus-servico2">
-                    <div class="card-content">
-                        <h3>Traslados Personalizados</h3>
-                        <p>Serviço de traslado sob medida, atendendo do lazer ao corporativo, com conforto e praticidade.</p>
-                        <p>Transporte para eventos, empresas, escolas e faculdades.</p>
-                    </div>
+            </div>
+            
+            <div class="servico2">
+                <div>
+                    <h3>Translados sob medida, do lazer ao corporativo.</h3>
+                    <p>Conforto e praticidade para empresas e passeios.</p>
                 </div>
-                <div class="servico3">
-                    <img src="imagens/onibus-servico3.jpg" alt="onibus-servico3">
-                    <div class="card-content">
-                        <h3>Frota Nova e Segura</h3>
-                        <p>Ônibus, micro-ônibus e vans modernas, revisadas, climatizadas e com o máximo de segurança e conforto para você.</p>
-                        <p>Poltronas reclináveis e amplo espaço para bagagens.</p>
-                    </div>
+                <img src="imagens/onibus-servico2.jpg" alt="onibus-servico2">
+            </div>
+            
+            <div class="servico3">
+                <img src="imagens/onibus-servico3.jpg" alt="onibus-servico3">
+                <div>
+                    <h3>Ônibus, micro-ônibus e vans modernas.</h3>
+                    <p>Veículos revisados, climatizados e seguros.</p>
                 </div>
+
             </div>
         </section>
 
-        <section class="sobre" id="sobre">
-            <h2>Sobre a Digão Tur</h2>
-            <p>
-                Na **Digão Tur**, trabalhamos para oferecer a melhor experiência em transporte de passageiros. Com anos de atuação no setor, garantimos conforto, segurança e pontualidade em cada viagem. Nossa frota conta com ônibus, micro-ônibus e vans equipadas com poltronas reclináveis, ar-condicionado, som ambiente e amplo espaço para bagagens. Estamos preparados para atender viagens em família, excursões, turismo religioso, eventos corporativos e muito mais. Escolha a Digão Tur e viaje com tranquilidade.
-            </p>
-        </section>
-
-        <section class="contato" id="contato">
-            <h2>Fale Conosco</h2>
+        <div class="sobre" id="sobre">
+            <h2>SOBRE NÓS</h2>
+            <p>Na Digão Tur, trabalhamos para oferecer a melhor experiência em transporte de passageiros. Com anos de
+                atuação no setor, garantimos conforto, segurança e pontualidade em cada viagem.
+                Nossa frota conta com ônibus, micro-ônibus e vans equipadas com poltronas reclináveis, ar-condicionado,
+                som ambiente e amplo espaço para bagagens. Estamos preparados para atender viagens em família,
+                excursões, turismo religioso, eventos corporativos e muito mais.</p>
+        </div>
+         <div class="contato" id="contato">
+            <h2>CONTATO</h2>
             <div class="redirect">
-                <h3>Orçamento Rápido por WhatsApp</h3>
-                <p>Entre em contato diretamente pelo WhatsApp para solicitar orçamentos, verificar disponibilidade e tirar dúvidas.</p>
-                <a href="https://wa.me/5545999792936" target="_blank" class="btn-principal">
-                    Chamar no WhatsApp
-                </a>
-            </div>
+                <p>Entre em contato diretamente pelo WhatsApp para solicitar orçamentos e tirar duvidas</p>
+                <button>CLIQUE AQUI</button>
+            </div> -->
             <div class="redirect">
-                <h3>Transporte Escolar/Faculdade 2026</h3>
-                <p>Preencha nosso formulário de interesse e garanta sua vaga para o transporte de faculdades e escolas em 2026.</p>
-                <a href="#" target="_blank" class="btn-principal">
-                    Formulário de Interesse
-                </a>
+                <p>Preencha nosso formulário e garanta sua vaga no transporte para faculdades e escolas em 2026</p>
+                <button>CLIQUE AQUI</button>
             </div>
-            <h2 class="texto-final">Venha viajar com a Digão Tur!</h2>
-        </section>
+        </div>
+        <div class="final">
+        <h2>Venha fazer parte da<br>família Digão Tur</h2>
+        </div>
     </main>
 
     <footer>
         <img src="imagens/Logo Digão Tur Branca.png" alt="logo-digaotur">
-        <p>
-            Contato: (45) 99979-2936 | (45) 99924-7995
-        </p>
-        <p>
-            DIGÃO TUR & Manicomio
-        </p>
-        <p>
-            © 2025 Todos os direitos reservados
-        </p>
+        <h2>Contato (45) 99979-2936 / (45) 99924-7995</h2>
+        <p>&copy; DIGÃO TUR & Manicomio</p>
+        <p>Todos os direitos reservados</p>
+
     </footer>
 </body>
+
 </html>
